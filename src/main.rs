@@ -36,6 +36,7 @@ fn main() -> Result<(), isahc::Error> {
     let mut power_off_rotel_if_node_is_not_streaming_after = 30;
     let mut loop_counter = 300;//5 minutes per run
     loop {
+        println!("-------------loop-start--------------");
         println!("Getting State from Node...");
         let mode_state = get_status_from_node(&args.node_ip_address, &args.node_port, "state".to_owned());
         println!("Node is in state: {}", mode_state.as_str());
@@ -73,10 +74,6 @@ fn main() -> Result<(), isahc::Error> {
             }
 
             if power_off_rotel_if_node_is_not_streaming_after == 0 {
-                println!("Asking Node's input id...");
-                let input_id = get_status_from_node(&args.node_ip_address, &args.node_port, "inputId".to_owned());
-                println!("Node's input id is {}", input_id);
-
                 println!("Asking Rotel's status...");
                 write_to_rotel(&mut rotel, "power?".to_owned());
                 thread::sleep(time::Duration::from_millis(100));
@@ -85,7 +82,7 @@ fn main() -> Result<(), isahc::Error> {
                 thread::sleep(time::Duration::from_millis(100));
                 let rotel_source_state = read_from_rotel(&mut rotel);
 
-                if rotel_power_state.contains("power=on$") && rotel_source_state.contains("source=aux1$") && input_id == "input2" {
+                if rotel_power_state.contains("power=on$") && rotel_source_state.contains("source=aux1$") {
                     println!("Node is connected to Rotel, Rotel is connected to Node, Node not streaming and Rotel is powered on.");
                     println!("Truning off Rotel...");
                     write_to_rotel(&mut rotel, "power_off!".to_owned());
@@ -94,6 +91,7 @@ fn main() -> Result<(), isahc::Error> {
         }
 
         println!("Waiting 1 second...");
+        println!("-------------loop-end--------------");
         thread::sleep(time::Duration::from_secs(1));
         loop_counter -= 1;
         if loop_counter <= 0 {
