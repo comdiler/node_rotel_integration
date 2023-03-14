@@ -67,10 +67,10 @@ fn main() -> Result<(), isahc::Error> {
             }
         } else {
             println!("Node is NOT streaming.");
-
-            if power_off_rotel_if_node_is_not_streaming_after > 0 {
-                println!("Will attempt to turn off node in {} seconds", power_off_rotel_if_node_is_not_streaming_after);
-                power_off_rotel_if_node_is_not_streaming_after -= 1;
+            println!("Will attempt to turn off node in {} seconds", power_off_rotel_if_node_is_not_streaming_after);
+            
+            if power_off_rotel_if_node_is_not_streaming_after < 0 {
+                power_off_rotel_if_node_is_not_streaming_after = 60;
             }
 
             if power_off_rotel_if_node_is_not_streaming_after == 0 {
@@ -88,6 +88,8 @@ fn main() -> Result<(), isahc::Error> {
                     write_to_rotel(&mut rotel, "power_off!".to_owned());
                 }
             }
+
+            power_off_rotel_if_node_is_not_streaming_after -= 1;
         }
 
         println!("Waiting 1 second...");
