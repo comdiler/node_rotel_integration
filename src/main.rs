@@ -66,8 +66,11 @@ fn main() -> Result<(), isahc::Error> {
             }
         } else {
             println!("Node is NOT streaming.");
-            println!("Rotel will be turned off in {} seconds", power_off_rotel_if_node_is_not_streaming_after);
-            power_off_rotel_if_node_is_not_streaming_after -= 1;
+
+            if power_off_rotel_if_node_is_not_streaming_after > 0 {
+                println!("Will attempt to turn off node in {} seconds", power_off_rotel_if_node_is_not_streaming_after);
+                power_off_rotel_if_node_is_not_streaming_after -= 1;
+            }
 
             if power_off_rotel_if_node_is_not_streaming_after == 0 {
                 println!("Asking Node's input id...");

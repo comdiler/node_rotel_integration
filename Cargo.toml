@@ -1,7 +1,7 @@
 [package]
 name = "node_rotel_integration"
 description = "Scans status of the Bluesound Node/PowerNode streamer available in your network and truns on the Rotel Amplifier via RS232 port ASCII command"
-version = "1.0.1"
+version = "1.0.2"
 authors = ["Volodymyr Prokopchuk", "Volodya Prokopchuk <comdiler@gmail.com>"]
 rust-version = "1.68"
 readme = "README.md"
