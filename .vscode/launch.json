@@ -1,0 +1,55 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'node_rotel_integration'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=node_rotel_integration",
+                    "--package=node_rotel_integration"
+                ],
+                "filter": {
+                    "name": "node_rotel_integration",
+                    "kind": "bin"
+                }
+            },
+            "args": [
+                "--node-ip-address=192.168.1.240",
+                "--rotel-rs232-port=/dev/ttyACM0",
+                "--rotel-rs232-baud-rate=115300",
+                "--node-port=11000"
+            ],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'node_rotel_integration'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=node_rotel_integration",
+                    "--package=node_rotel_integration"
+                ],
+                "filter": {
+                    "name": "node_rotel_integration",
+                    "kind": "bin"
+                }
+            },
+            "args": [
+                "--node-ip-address=192.168.1.240",
+                "--rotel-rs232-port=/dev/ttyACM0",
+                "--rotel-rs232-baud-rate=115300",
+                "--node-port=11000"
+            ],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
