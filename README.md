@@ -1,5 +1,5 @@
 # About
-This is a simple application, which scans status of the Bluesound Node/PowerNode streamer available in your network and truns on the Rotel Amplifier via RS232 port ASCII command.
+This is a simple application, which scans status of the Bluesound Node/PowerNode streamer available in your network and truns on the Rotel Amplifier via RS232 port ASCII command if Node Streamer is straming content.
 
 # Usage
     1. Compile the source code with the usage of RUST Compiler
