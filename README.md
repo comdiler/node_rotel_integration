@@ -3,7 +3,7 @@ This is a simple application, which scans status of the Bluesound Node/PowerNode
 
 # Usage
     1. Compile the source code with the usage of RUST Compiler
-    2. Run the app
+    2. Run the app (preferably with a supervisord)
 
 # Input params
     --node-ip-address - the IP adress of the Bluesound Node/PowerNode device. Example: --node-ip-address 192.168.1.100
