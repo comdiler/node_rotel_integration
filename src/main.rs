@@ -60,8 +60,6 @@ fn main() -> Result<(), isahc::Error> {
             if rote_response_data.contains("power=standby$") {
                 println!("Rotel is in stand by mode...");
                 println!("Turning on Rotel...");
-                rotel.write("power!".as_bytes()).expect("Write to Rotel is failed!");
-                thread::sleep(time::Duration::from_millis(200));
                 rotel.write("aux1!".as_bytes()).expect("Write to Rotel is failed!");
             }
         } else {
