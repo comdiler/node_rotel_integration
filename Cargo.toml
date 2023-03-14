@@ -1,0 +1,18 @@
+[package]
+name = "node_rotel_integration"
+description = "Scans status of the Bluesound Node/PowerNode streamer available in your network and truns on the Rotel Amplifier via RS232 port ASCII command"
+version = "1.0.0"
+authors = ["Volodymyr Prokopchuk", "Volodya Prokopchuk <comdiler@gmail.com>"]
+rust-version = "1.68"
+readme = "README.md"
+license = "Apache-2.0"
+license-file = "LICENSE.txt"
+keywords = ["bluesound", "node", "rotel"]
+edition = "2021"
+
+[dependencies]
+clap = { version = "4.1", features = ["derive"] }
+derive = "1.0.0"
+isahc = "1.7.2"
+serialport = "4.2.0"
+treexml = "0.7.0"
